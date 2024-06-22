@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebApplication1.EF.Student>
+
+@{
+    ViewBag.Title = "ViewStudents";
+}
+
+<h2>ViewStudents</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Registration")
+</p>
+<div class="row">
+    <form method="post" action="/Home/Search">
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="Search" placeholder="Type Email" />
+        </div>
+        <div class="col-md-4">
+            <input type="submit" value="Search" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditStudents", new { id=item.id }) |
+            @Html.ActionLink("Delete", "DeleteStudents", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Registration";
+}
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <form method="post">
+        <input type="text" name="FirstName" placeholder="First Name" class="form-control" />
+        <input type="text" name="LastName" placeholder="Last Name" class="form-control" />
+
+        <input type="text" name="Email" placeholder="Email" class="form-control" />
+        <input type="text" name="Address" placeholder="Address" class="form-control" />
+        <input type="submit" value="Registration" class="btn btn-success" />
+        <span class="text-danger">@ViewBag.Error</span>
+    </form>
+</div>

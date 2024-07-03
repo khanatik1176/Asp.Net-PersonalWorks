@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BlogProject.DTOs.PostDTO>
+
+@{
+    ViewBag.Title = "PostDetails";
+}
+
+<h2>PostDetails</h2>
+
+
+<div class="row">
+    <form method="post" action="/Post/Search">
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="Search" placeholder="Provide the Post Title" />
+        </div>
+        <div class="col-md-4">
+            <input type="submit" value="Search" class="btn btn-success" /> <br /><br />
+           <span class="text-primary"> @Html.ActionLink("Back to Details", "PostDetails", "Post") </span>
+
+        </div>
+    </form>
+</div>
+
+<p>
+    @Html.ActionLink("Create New Post", "AddPost", "Post")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uid)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uid)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "EditPost", new {  id=item.Pid}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Pid }) |
+            @Html.ActionLink("Comments", "Comments", new {  id=item.Pid }) 
+
+        </td>
+    </tr>
+}
+
+</table>

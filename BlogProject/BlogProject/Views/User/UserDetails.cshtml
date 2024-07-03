@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BlogProject.DTOs.UserDTO>
+
+@{
+    ViewBag.Title = "UserDetails";
+}
+
+<h2>UserDetails</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Uid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRealName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Uid)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserRole)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserStatus)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserRealName)
+    </td>
+</tr>
+}
+
+</table>

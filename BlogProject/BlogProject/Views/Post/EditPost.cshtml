@@ -1,0 +1,61 @@
+﻿@model BlogProject.DTOs.PostDTO
+
+@{
+    ViewBag.Title = "EditPost";
+}
+
+<h2>EditPost</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>PostDTO</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pid, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="Pid" value="@Model.Pid" class="form-control" hidden />
+            @Html.ValidationMessageFor(model => model.Pid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PostTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="PostTitle" value="@Model.PostTitle" class="form-control" hidden />
+            @Html.ValidationMessageFor(model => model.PostTitle, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PostContent, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="PostContent" value="@Model.PostContent" class="form-control" hidden />
+            @Html.ValidationMessageFor(model => model.PostContent, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Uid, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="Uid" value="@Model.Uid" class="form-control" hidden />
+            @Html.ValidationMessageFor(model => model.Uid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back", "PostDetails","Post")
+</div>

@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LabdBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Cid" />
+    </Key>
+    <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Uid" Type="Int32" Nullable="false" />
+    <Property Name="Pid" Type="Int32" Nullable="false" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comment1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Post" Relationship="Self.FK_Comments_Comments_Post" FromRole="Comments" ToRole="Posts" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Comments_Comments_user" FromRole="Comments" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="PostLike">
+    <Key>
+      <PropertyRef Name="PLid" />
+    </Key>
+    <Property Name="PLid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pid" Type="Int32" Nullable="false" />
+    <Property Name="Uid" Type="Int32" Nullable="false" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_PostLikes_PostLikes_User" FromRole="PostLikes" ToRole="Users" />
+    <NavigationProperty Name="Post" Relationship="Self.FK_PostLikes_Posts" FromRole="PostLikes" ToRole="Posts" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="Pid" />
+    </Key>
+    <Property Name="Pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PostContent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Uid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Comments_Post" FromRole="Posts" ToRole="Comments" />
+    <NavigationProperty Name="PostLikes" Relationship="Self.FK_PostLikes_Posts" FromRole="Posts" ToRole="PostLikes" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Posts_Users" FromRole="Posts" ToRole="Users" />
+    <NavigationProperty Name="PostTags" Relationship="Self.FK_PostTags_PostTags_Post" FromRole="Posts" ToRole="PostTags" />
+  </EntityType>
+  <EntityType Name="PostTag">
+    <Key>
+      <PropertyRef Name="PTid" />
+    </Key>
+    <Property Name="PTid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tid" Type="Int32" Nullable="false" />
+    <Property Name="Pid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Post" Relationship="Self.FK_PostTags_PostTags_Post" FromRole="PostTags" ToRole="Posts" />
+    <NavigationProperty Name="Tag" Relationship="Self.FK_PostTags_Tags" FromRole="PostTags" ToRole="Tags" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="Tid" />
+    </Key>
+    <Property Name="Tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TagName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PostTags" Relationship="Self.FK_PostTags_Tags" FromRole="Tags" ToRole="PostTags" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Uid" />
+    </Key>
+    <Property Name="Uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserRealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Comments_user" FromRole="Users" ToRole="Comments" />
+    <NavigationProperty Name="PostLikes" Relationship="Self.FK_PostLikes_PostLikes_User" FromRole="Users" ToRole="PostLikes" />
+    <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Users" FromRole="Users" ToRole="Posts" />
+  </EntityType>
+  <Association Name="FK_Comments_Comments_Post">
+    <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="Pid" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Comments_user">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Uid" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="Uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostLikes_PostLikes_User">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="PostLikes" Type="Self.PostLike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Uid" />
+      </Principal>
+      <Dependent Role="PostLikes">
+        <PropertyRef Name="Uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostLikes_Posts">
+    <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+    <End Role="PostLikes" Type="Self.PostLike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="Pid" />
+      </Principal>
+      <Dependent Role="PostLikes">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Posts_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Posts" Type="Self.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Uid" />
+      </Principal>
+      <Dependent Role="Posts">
+        <PropertyRef Name="Uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostTags_PostTags_Post">
+    <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+    <End Role="PostTags" Type="Self.PostTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="Pid" />
+      </Principal>
+      <Dependent Role="PostTags">
+        <PropertyRef Name="Pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostTags_Tags">
+    <End Role="Tags" Type="Self.Tag" Multiplicity="1" />
+    <End Role="PostTags" Type="Self.PostTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="Tid" />
+      </Principal>
+      <Dependent Role="PostTags">
+        <PropertyRef Name="Tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LabdBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="PostLikes" EntityType="Self.PostLike" />
+    <EntitySet Name="Posts" EntityType="Self.Post" />
+    <EntitySet Name="PostTags" EntityType="Self.PostTag" />
+    <EntitySet Name="Tags" EntityType="Self.Tag" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Comments_Comments_Post" Association="Self.FK_Comments_Comments_Post">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Comments_user" Association="Self.FK_Comments_Comments_user">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostLikes_PostLikes_User" Association="Self.FK_PostLikes_PostLikes_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PostLikes" EntitySet="PostLikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostLikes_Posts" Association="Self.FK_PostLikes_Posts">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="PostLikes" EntitySet="PostLikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Posts_Users" Association="Self.FK_Posts_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Posts" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostTags_PostTags_Post" Association="Self.FK_PostTags_PostTags_Post">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="PostTags" EntitySet="PostTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostTags_Tags" Association="Self.FK_PostTags_Tags">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="PostTags" EntitySet="PostTags" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

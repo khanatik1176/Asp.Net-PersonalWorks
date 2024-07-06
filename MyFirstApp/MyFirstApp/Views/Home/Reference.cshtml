@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Reference";
+}
+
+<h1>Reference:</h1>
+<ol>
+    @foreach (var refDeatils in ViewBag.Reference)
+    {
+        <li>@refDeatils.RefName</li>
+        <ul>
+
+            <li>@refDeatils.Designation</li>
+            <li>@refDeatils.Org</li>
+        </ul>
+    }
+
+</ol>

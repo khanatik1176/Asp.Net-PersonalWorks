@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "UserDashboard";
+}
+
+@if (TempData["Msg"] != null)
+            {
+                <span class="text-success">@TempData["Msg"]</span>
+            }
+
+<h2>UserDashboard</h2>
+
+<ul class="">
+    <li><a href="/User/UserDetails">User Details</a></li>
+    <li><a href="/Recipe/RecipeDetails">Recipe Details</a></li>
+
+</ul>

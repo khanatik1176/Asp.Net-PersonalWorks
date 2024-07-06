@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MiddBModelStoreContainer" CdmEntityContainer="MiddBEntities">
+    <EntitySetMapping Name="RecipeRatings">
+      <EntityTypeMapping TypeName="MiddBModel.RecipeRating">
+        <MappingFragment StoreEntitySet="RecipeRatings">
+          <ScalarProperty Name="RTid" ColumnName="RTid" />
+          <ScalarProperty Name="Uid" ColumnName="Uid" />
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="RecipeRating1" ColumnName="RecipeRating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recipes">
+      <EntityTypeMapping TypeName="MiddBModel.Recipe">
+        <MappingFragment StoreEntitySet="Recipes">
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="RecipeTitle" ColumnName="RecipeTitle" />
+          <ScalarProperty Name="RecipeIngridient" ColumnName="RecipeIngridient" />
+          <ScalarProperty Name="RecipeInstructions" ColumnName="RecipeInstructions" />
+          <ScalarProperty Name="RecipePostTime" ColumnName="RecipePostTime" />
+          <ScalarProperty Name="Uid" ColumnName="Uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MiddBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Uid" ColumnName="Uid" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MiddBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="RecipeRatings">
+    <Key>
+      <PropertyRef Name="RTid" />
+    </Key>
+    <Property Name="RTid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Uid" Type="int" Nullable="false" />
+    <Property Name="Rid" Type="int" Nullable="false" />
+    <Property Name="RecipeRating" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recipes">
+    <Key>
+      <PropertyRef Name="Rid" />
+    </Key>
+    <Property Name="Rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecipeTitle" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RecipeIngridient" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RecipeInstructions" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RecipePostTime" Type="datetime" Nullable="false" />
+    <Property Name="Uid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Uid" />
+    </Key>
+    <Property Name="Uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserRole" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_RecipeRatings_RecipeRatings_Recipe">
+    <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+    <End Role="RecipeRatings" Type="Self.RecipeRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipes">
+        <PropertyRef Name="Rid" />
+      </Principal>
+      <Dependent Role="RecipeRatings">
+        <PropertyRef Name="Rid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecipeRatings_RecipeRatings_User">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="RecipeRatings" Type="Self.RecipeRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Uid" />
+      </Principal>
+      <Dependent Role="RecipeRatings">
+        <PropertyRef Name="Uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recipes_Recipes_User">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Uid" />
+      </Principal>
+      <Dependent Role="Recipes">
+        <PropertyRef Name="Uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MiddBModelStoreContainer">
+    <EntitySet Name="RecipeRatings" EntityType="Self.RecipeRatings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_RecipeRatings_RecipeRatings_Recipe" Association="Self.FK_RecipeRatings_RecipeRatings_Recipe">
+      <End Role="Recipes" EntitySet="Recipes" />
+      <End Role="RecipeRatings" EntitySet="RecipeRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecipeRatings_RecipeRatings_User" Association="Self.FK_RecipeRatings_RecipeRatings_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RecipeRatings" EntitySet="RecipeRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recipes_Recipes_User" Association="Self.FK_Recipes_Recipes_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Recipes" EntitySet="Recipes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

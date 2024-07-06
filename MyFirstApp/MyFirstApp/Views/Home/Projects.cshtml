@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<main aria-labelledby="title">
+
+    <h1>Projects:</h1>
+
+    <table class="table table-bordered">
+
+        <th>Title</th>
+        <th>Description</th>
+        <th>Course</th>
+
+        @foreach ( var pdesc in ViewBag.ProjectDetails)
+        {
+            <tr>
+                <td>@pdesc.ProjectTitle</td>
+                <td>@pdesc.Description</td>
+                <td>@pdesc.PCourse</td>
+            </tr>
+
+        }
+
+    </table>
+
+</main>

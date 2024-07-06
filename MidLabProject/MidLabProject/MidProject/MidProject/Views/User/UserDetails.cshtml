@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MidProject.DTOs.UserDTO>
+
+@{
+    ViewBag.Title = "UserDetails";
+}
+
+<h2>UserDetails</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Uid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserRole)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

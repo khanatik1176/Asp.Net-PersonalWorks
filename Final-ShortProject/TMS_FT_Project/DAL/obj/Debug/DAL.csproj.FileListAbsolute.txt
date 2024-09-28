@@ -1,0 +1,17 @@
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\bin\Debug\DAL.dll
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\bin\Debug\DAL.pdb
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\obj\Debug\DAL.dll
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\obj\Debug\DAL.pdb
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\bin\Debug\DAL.dll.config
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\bin\Debug\EntityFramework.dll
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\bin\Debug\EntityFramework.xml
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\obj\Debug\DAL.Migrations.Intial_migration.resources
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\obj\Debug\DAL.Migrations.secondEdit.resources
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\obj\Debug\DAL.Migrations.varcharIssueSolved.resources
+C:\Users\khana\source\repos\TMS_FT_Project\DAL\obj\Debug\DAL.Migrations.categoryadded.resources

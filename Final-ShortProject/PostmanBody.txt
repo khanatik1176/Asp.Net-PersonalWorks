@@ -1,0 +1,59 @@
+Create Task :
+
+{
+    "T_Name": "Search Feature",
+    "T_Description": "This is a description of the search feature.",
+    "T_Status": "To-Do",
+    "T_Complete_Date": "2024-09-29T14:05:00.843",
+    "C_Name":"Backend",
+    "SubTasks": [
+        {
+            "ST_Name": "Search Hovering",
+            "ST_Description": "This is a description of the search subtask.",
+
+        }
+    ]
+}
+
+Update Task: 
+
+{
+    "Tid": 59,
+    "T_Name": "Auth",
+    "T_Description": "This is a description of the sample task.",
+    "T_Complete_Date": "2024-09-29T20:21:45.843",
+    "T_Status": "In-Progress",
+    "UserEmail": null,
+    "Subtasks": [
+        {
+            "ST_Id": 13,
+            "ST_Name": "Sample Subtask",
+            "ST_Description": "This is a description of the sample subtask.",
+            "T_id": 24
+        }
+    ]
+}
+
+Create Category 
+
+{
+    "Cid": 3,
+    "C_Name":"Backend"
+}
+
+Sign-Up
+
+{
+    "UD_Name": "John Doe",
+    "UD_Email": "Faisal1176@gmail.com",
+    "UD_Address": "123 Main Street",
+    "UD_PhoneNumber": "1234567890",
+    "Password": "StrongPassword123"
+}
+
+Login 
+
+{
+    "Uname": "Faisal1176@gmail.com",
+    "Password":"StrongPassword123"
+}
